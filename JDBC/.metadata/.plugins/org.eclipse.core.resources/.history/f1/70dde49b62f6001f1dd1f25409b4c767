@@ -1,0 +1,140 @@
+package homework;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class SchoolOperation {
+
+   
+	
+	
+	
+	
+     String URL = "jdbc:postgresql://localhost:5432/demo";
+    String USER = "postgres";
+     String PASSWORD = "pankaj123";
+
+    public static void main(String[] args) {
+    	
+      
+        SchoolOperation schoolOperation = new SchoolOperation();
+
+        
+        schoolOperation.createStudent(1,"pankaj",334323,86678567864L);
+
+    }
+
+    
+    
+    
+    
+    public void createStudent(int id , String name, double fees,Long phn) {
+        String sql = "INSERT INTO student (id ,name,fees,phn) VALUES (?,?, ?, ?)";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+        	 pstmt.setInt(1, id);
+            pstmt.setString(2, name);
+            pstmt.setDouble(3, fees);
+            pstmt.setLong(4,phn);
+            pstmt.executeUpdate();
+            System.out.println("Student created successfully!");
+
+        } catch (SQLException e) {
+            System.out.println("Error creating student: " + e.getMessage());
+        }
+    }
+}
+    
+    
+    
+
+
+
+
+
+
+
+    
+//    
+//   public void readStudents() {
+//String sql = "SELECT * FROM student";
+//
+//try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//     PreparedStatement pstmt = conn.prepareStatement(sql);
+//     ResultSet rs = pstmt.executeQuery()) {
+//
+//    while (rs.next()) {
+//        int id = rs.getInt("id"); // Read the 'id' column
+//        String name = rs.getString("name"); // Read the 'name' column
+//        double fees = rs.getDouble("fees"); // Read the 'fees' column
+//        long phn = rs.getLong("phn"); // Read the 'phn' column
+//
+//        // Print the student details
+//        System.out.println("ID: " + id + ", Name: " + name + ", Fees: " + fees + ", Phone: " + phn);
+//    }
+//
+//} catch (SQLException e) {
+//    System.out.println("Error reading students: " + e.getMessage());
+//}
+//}
+//
+//   
+//    
+//    
+//    
+//    
+//    
+///public void updateStudent(int id, String name, double fees, Long phn) {
+//    String sql = "UPDATE student SET name = ?, fees = ?, phn = ? WHERE id = ?";
+//
+//    try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//         PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//
+//        pstmt.setString(1, name); // Set the new name
+//        pstmt.setDouble(2, fees); // Set the new fees
+//        pstmt.setLong(3, phn);    // Set the new phone number
+//        pstmt.setInt(4, id);      // Specify the student ID to update
+//
+//        int rowsUpdated = pstmt.executeUpdate();
+//
+//        if (rowsUpdated > 0) {
+//            System.out.println("Student updated successfully!");
+//        } else {
+//            System.out.println("No student found with ID: " + id);
+//        }
+//
+//    } catch (SQLException e) {
+//        System.out.println("Error updating student: " + e.getMessage());
+//    }
+//}
+//
+//    
+//    
+//    
+//    
+//    
+//    public void deleteStudent(int id) {
+//String sql = "DELETE FROM student WHERE id = ?";
+//
+//try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+//     PreparedStatement pstmt = conn.prepareStatement(sql)) {
+//
+//    pstmt.setInt(1, id); // Set the student ID to delete
+//    int rowsDeleted = pstmt.executeUpdate();
+//
+//    if (rowsDeleted > 0) {
+//        System.out.println("Student deleted successfully!");
+//    } else {
+//        System.out.println("No student found with ID: " + id);
+//    }
+//
+//} catch (SQLException e) {
+//    System.out.println("Error deleting student: " + e.getMessage());
+//}
+//}
+    
