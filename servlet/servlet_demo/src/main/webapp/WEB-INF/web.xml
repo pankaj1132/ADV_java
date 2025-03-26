@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app
+    version="4.0"
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:javaee="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xml="http://www.w3.org/XML/1998/namespace"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+  <display-name>Archetype Created Web Application</display-name>
+  
+  
+  <context-param>
+  <param-name>id</param-name>
+  <param-value>12</param-value>
+  </context-param>
+  
+  <context-param>
+  <param-name>name</param-name>
+  <param-value>pankaj</param-value>
+  </context-param>
+  
+  
+  
+  <context-param>
+  <param-name>percentage</param-name>
+  <param-value>100</param-value>
+  </context-param>
+  	<welcome-file-list>
+  		<welcome-file>home.html</welcome-file>
+  		<welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+  
+  
+  <servlet>
+  <servlet-name>
+  emp_ser
+  </servlet-name>
+  <servlet-class>
+  genric_servlet.EmployeeServlet
+  </servlet-class>
+  
+  </servlet>
+  
+  
+  <servlet-mapping>
+  <servlet-name>
+  emp_ser
+  </servlet-name>
+  
+  <url-pattern>
+  /emp
+  </url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  <servlet-name>
+  cals
+  </servlet-name>
+  <servlet-class>
+  genric_servlet.calculate
+  </servlet-class>
+  
+  </servlet>
+  
+  
+  <servlet-mapping>
+  <servlet-name>
+  cals
+  </servlet-name>
+  
+  <url-pattern>
+  /cal
+  </url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  <servlet-name>
+  configA
+  </servlet-name>
+  <servlet-class
+  >Servlet_Config.Servlet_config
+  </servlet-class>
+  
+  <init-param>
+  <param-name>url</param-name>
+  <param-value>jdbc://postgress?locakhost//</param-value>
+  </init-param>
+  
+  
+  <init-param>
+  <param-name>user</param-name>
+  <param-value>pankaj</param-value>
+  </init-param>
+  
+  
+  <init-param>
+  <param-name>password</param-name>
+  <param-value>mypassword</param-value>
+  </init-param>
+  
+  
+  </servlet>
+  
+  
+  <servlet-mapping>
+  <servlet-name>
+  configA
+  </servlet-name>
+  
+  <url-pattern>
+  /config
+  </url-pattern>
+  </servlet-mapping>
+  
+</web-app>
